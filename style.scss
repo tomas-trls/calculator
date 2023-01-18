@@ -2,7 +2,7 @@
 
 $color-black: #323a42;
 $color-brown: rgb(207, 139, 75);
-$color-black-shadow: rgba(232, 232, 232, 0.05);
+$color-black-shadow: rgba(232, 232, 232, 0.106);
 $color-screen: #303841;
 $color-pink: #ffadca;
 $color-pink-shadow: #fc6398;
@@ -52,7 +52,7 @@ body {
 
   &__screen {
     background-color: $color-screen;
-    box-shadow: 2px 2px 8px 1px $color-black-shadow;
+    box-shadow: 0px -4px 30px 1px $color-black-shadow inset;
     grid-column: 1/5;
     grid-row: 1/6;
     margin: 5px;
@@ -82,18 +82,53 @@ body {
     align-items: center;
     margin: 5px;
     border-radius: 12px;
+    will-change: transform;
+    user-select: none;
+
+    &:hover {
+      .calculator__key--front {
+        transform: translateY(-8px);
+        transition: 200ms;
+      }
+    }
+    &:active {
+      .calculator__key--front {
+        transform: translateY(-1px);
+        transition: 200ms;
+      }
+    }
+    &--front {
+      width: 100%;
+      height: 60px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      transform: translateY(-5px);
+
+      &--pink {
+        background-color: $color-pink;
+      }
+
+      &--blue {
+        background: $color-blue;
+      }
+
+      &--yellow {
+        background-color: $color-yellow;
+      }
+    }
+
     &--blue {
-      background-color: $color-blue;
-      box-shadow: inset 0 0 10px 4px $color-blue-shadow;
+      background-color: $color-blue-shadow;
     }
     &--pink {
-      background-color: $color-pink;
-      box-shadow: inset 0 0 10px 4px $color-pink-shadow;
+      background-color: $color-pink-shadow;
     }
 
     &--yellow {
-      background-color: $color-yellow;
-      box-shadow: inset 0 0 10px 4px $color-yellow-shadow;
+      background-color: $color-yellow-shadow;
     }
   }
 
