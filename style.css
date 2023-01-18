@@ -44,12 +44,21 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  padding: 5px;
+  padding-right: 10px;
   border-radius: 8px;
   font-size: 5rem;
 }
 .calculator #zero {
   grid-column: 1/3;
+}
+.calculator__symbol {
+  position: relative;
+  top: -3px;
+}
+.calculator #dot-symbol {
+  font-size: 5rem;
+  position: relative;
+  top: -20px;
 }
 .calculator__key {
   display: flex;
@@ -75,10 +84,17 @@ body {
     border-radius: 16px;
     box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
     width: 300px;
-    height: 500px;
+    height: 600px;
     font-size: 2rem;
   }
   .calculator__screen {
     font-size: 3rem;
+  }
+  .calculator__key {
+    height: 60px;
+    width: 60px;
+  }
+  .calculator #zero {
+    width: 135px;
   }
 }/*# sourceMappingURL=style.css.map */
