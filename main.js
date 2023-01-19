@@ -1,20 +1,41 @@
-const keys = document.querySelectorAll(".calculator__key");
-
+const numbers = document.querySelectorAll(".calculator__key--blue");
+const operators = document.querySelectorAll(".calculator__key--pink");
+const equal = document.querySelector("#calculator__key--yellow");
+const clear = document.querySelector("#clear");
 let screen = document.querySelector("#screen");
 
-let inputArr = [];
+let firstInputArr = [];
+let secondInputArr = [];
+let sum = [];
+
 const addKey = (event) => {
-  if (event.target.innerText === "C") {
-    inputArr = [];
-  } else if (Number(event.target.innerText)) {
-    inputArr.push(event.target.innerText);
-  } else {
-    console.log(event.target.innerText);
-  }
+  firstInputArr.push(event.target.innerText);
+  screen.innerText = firstInputArr.join("");
 };
 
-keys.forEach((key) => {
-  key.addEventListener("click", addKey);
+numbers.forEach((number) => {
+  number.addEventListener("click", addKey);
 });
 
-inputArr.join("");
+const handleOperators = (event) => {
+  let firstVar = parseFloat(firstInputArr.join(""));
+  screen.innerText += event.target.innerText;
+};
+
+operators.forEach((operator) => {
+  operator.addEventListener("click", handleOperators);
+});
+
+const handleEqual = (event) => {
+  screen.innerText = `${parseInt(firstInputArr.join(""))} ${
+    event.target.innerText
+  } `;
+};
+
+const clearScreen = () => {
+  firstInputArr = [];
+  secondInputArr = [];
+  screen.innerText = "";
+};
+
+clear.addEventListener("click", clearScreen);
