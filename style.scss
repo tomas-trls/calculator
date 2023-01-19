@@ -19,11 +19,15 @@ $color-white: rgb(255, 255, 255);
 }
 
 body {
-  background-color: rgba(199, 170, 105, 0.292);
+  background-color: $color-black;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 897px) {
+    background-color: rgba(199, 170, 105, 0.292);
+  }
 }
 
 .calculator {
@@ -31,7 +35,7 @@ body {
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
   padding: 5px;
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -84,17 +88,20 @@ body {
     border-radius: 12px;
     will-change: transform;
     user-select: none;
+    transition: 200ms;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
       .calculator__key--front {
         transform: translateY(-8px);
+        filter: brightness(110%);
         transition: 200ms;
       }
     }
     &:active {
       .calculator__key--front {
-        transform: translateY(-1px);
         transition: 200ms;
+        transform: translateY(-1px);
       }
     }
     &--front {
@@ -132,7 +139,7 @@ body {
     }
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 897px) {
     border-radius: 16px;
     box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px,
       rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px,
