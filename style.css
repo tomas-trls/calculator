@@ -48,11 +48,23 @@ body {
   grid-row: 1/6;
   margin: 5px;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: flex-end;
   padding-right: 10px;
   border-radius: 8px;
   font-size: 5rem;
+  overflow-x: scroll;
+}
+.calculator__operation {
+  align-self: flex-end;
+  max-width: 100%;
+  overflow-x: scroll;
+  padding: 4% 0;
+}
+.calculator__result {
+  align-self: flex-end;
+  max-width: 100%;
 }
 .calculator #zero {
   grid-column: 1/3;
