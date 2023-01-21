@@ -1,5 +1,5 @@
 # 🌟 Calculator Project 🦦 
-_Nology JS challenge, making a calulator using HTML, CSS, SCSS &amp; JS
+This is the second _Nology challenge, where I had to make a calulator using HTML, CSS, SCSS &amp; and for all the logic JavaScript.
 
 
 ## 💥 Getting Started 💥
