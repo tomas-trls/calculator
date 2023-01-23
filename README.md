@@ -1,5 +1,5 @@
 # 🌟 Calculator Project 🦦 
-_Nology JS challenge, making a calulator using HTML, CSS, SCSS &amp; JS
+This is the second _Nology challenge, where I had to make a calulator using HTML, CSS, SCSS &amp; and for all the logic JavaScript.
 
 
 ## 💥 Getting Started 💥
@@ -8,7 +8,15 @@ To view the Calculator, simply clone or download the repository and open the ind
 
 ## 🌚 Demo 🌝
 
-[Live Demo](https://tomas-trls.github.io/calculator/)
+  <br />
+<p align="center"> <a href="https://tomas-trls.github.io/calculator/">[Live Demo]</a></p>
+
+ <p align="center"> 
+ 
+ <img src="http://g.recordit.co/xH4M0PqHmG.gif" alt="Demo gif" />
+  
+ </p>
+
 
 
 ## ⚡️ Built With ⚡️
