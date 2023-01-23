@@ -8,12 +8,7 @@ const negative = document.querySelector("#plus-minus-symbol");
 let screenResult = document.querySelector(".calculator__result");
 let screenOperation = document.querySelector(".calculator__operation");
 
-let inputArr = [];
-let operation = [];
-let result = 0;
-let resultArr = [];
 let operator;
-let sumOper;
 
 operators.forEach((op) => {
   op.addEventListener("click", (event) => {
@@ -21,47 +16,121 @@ operators.forEach((op) => {
   });
 });
 
-const handleEqual = () => {
-  let inputString = inputArr.join("");
-  if (operator == "+") {
-    if (resultArr.length > 0) {
-      let extraResult = inputArr.join("").split("+");
-      resultArr.forEach((element) => {
-        result = element + parseFloat(extraResult[extraResult.length - 1]);
-      });
-      console.log(result);
-      resultArr[0] = result;
-    } else {
-      operation = inputString.split("+");
-      operation.forEach((element) => {
-        result += parseFloat(element);
-      });
-      resultArr.push(result);
-    }
-  } else if (operator == "-") {
-    operation = inputString.split("-");
-    operation.reduce((total, element) => {
-      result = total - parseFloat(element);
-    });
-    resultArr.push(result);
-    operators.forEach((op) => {
-      op.addEventListener("click", (event) => {
-        operator = event.target.innerText;
-      });
-    });
-  } else if (operator == "x") {
-    operation = inputString.split("x");
-    operation.reduce((total, element) => {
-      result = total * parseFloat(element);
-    });
-  } else if (operator == "÷") {
-    operation = inputString.split("÷");
-    operation.reduce((total, element) => {
-      result = total / parseFloat(element);
-    });
+const addition = (array) => {
+  array.reduce((total, element) => {
+    return (result = parseFloat(total) + parseFloat(element));
+  });
+  return result;
+};
+
+const substraction = (array) => {
+  array.reduce((total, element) => {
+    return (result = parseFloat(total) - parseFloat(element));
+  });
+  return result;
+};
+
+const multiplication = (array) => {
+  array.reduce((total, element) => {
+    return (result = parseFloat(total) * parseFloat(element));
+  });
+  return result;
+};
+
+const division = (array) => {
+  array.reduce = (total, element) => {
+    return (result = parseFloat(total) / parseFloat(element));
+  };
+  return result;
+};
+
+let inputString;
+let extraResult;
+let inputArr = [];
+let maxInputArr = [];
+let operation = [];
+let result = 0;
+let resultArr = [];
+let extraInput;
+
+const calculate = () => {
+  inputString = inputArr.join("");
+  console.log(resultArr);
+  maxInputArr.push(...inputString.split(operator));
+  extraInput = parseFloat(inputArr[inputArr.length - 1]);
+  switch (operator) {
+    case "+":
+      if (maxInputArr.length == 2) {
+        resultArr.push(addition(maxInputArr));
+      } else if (maxInputArr.length > 2) {
+        maxInputArr = [];
+        maxInputArr.push(result);
+        maxInputArr.push(extraInput);
+        resultArr[0] = addition(maxInputArr);
+        console.log(resultArr);
+      }
+      break;
+    case "-":
+      resultArr.push(substraction(maxInputArr));
+      maxInputArr = [];
+      break;
+    case "x":
+      resultArr.push(multiplication(maxInputArr));
+      maxInputArr = [];
+      break;
+    case "÷":
+      resultArr.push(division(maxInputArr));
+      maxInputArr = [];
+      break;
   }
+};
+
+const handleEqual = () => {
+  // if (operator == "+") {
+  //   if (resultArr.length > 0) {
+  //     extraResult = inputArr.join("").split("+");
+  //     let finalResult = extraResult.slice(operation.length);
+  //     finalResult.forEach((number) => {
+  //       resultArr[0] += parseFloat(number);
+  //     });
+  //     result = resultArr[0];
+  //   } else {
+  //     operation = inputString.split("+");
+  //     operation.reduce((total, element) => {
+  //       return (result = parseFloat(total) + parseFloat(element));
+  //     });
+  //     resultArr.push(result);
+  //   }
+  // } else if (operator == "-") {
+  //   if (resultArr.length > 0) {
+  //     extraResult = inputArr.join("").split("-");
+  //     let finalResult = extraResult.slice(operation.length);
+  //     finalResult.forEach((number) => {
+  //       resultArr[0] -= parseFloat(number);
+  //     });
+  //     result = resultArr[0];
+  //   } else {
+  //     operation = inputString.split("-");
+  //     operation.reduce((total, element) => {
+  //       return (result = parseFloat(total) - parseFloat(element));
+  //     });
+  //     resultArr.push(result);
+  //   }
+  // } else if (operator == "x") {
+  //   operation = inputString.split("x");
+  //   operation.reduce((total, element) => {
+  //     return (result = parseFloat(total) * parseFloat(element));
+  //   });
+  //   resultArr.push(result);
+  // } else if (operator == "÷") {
+  //   operation = inputString.split("÷");
+  //   operation.reduce((total, element) => {
+  //     return (result = parseFloat(total) / parseFloat(element));
+  //   });
+  //   resultArr.push(result);
+  // }
   screenOperation.innerText = `${inputString}`;
-  screenResult.innerText = `${parseFloat(result.toFixed(7))}`;
+  //screenResult.innerText = `${parseFloat(result.toFixed(7))}`;
 };
 
 let inputBeforeNegative;
@@ -84,7 +153,9 @@ const handlePercentage = () => {
 };
 
 const clearScreenResult = () => {
+  inputString = [];
   inputArr = [];
+  maxInputArr = [];
   operation = [];
   result = 0;
   resultArr = [];
@@ -96,6 +167,8 @@ const clearScreenResult = () => {
 const addKey = (event) => {
   if (event.target.innerText == "=") {
     handleEqual();
+    calculate();
+    screenResult.innerText = `${parseFloat(resultArr[0].toFixed(7))}`;
   } else if (event.target.innerText == "C") {
     clearScreenResult();
   } else if (event.target.innerText == "%") {
