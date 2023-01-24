@@ -1,5 +1,10 @@
 # 🌟 Calculator Project 🦦 
-This is the second _Nology challenge, where I had to make a calulator using HTML, CSS, SCSS &amp; and for all the logic JavaScript.
+
+This is a simple calculator application that I have built using vanilla JavaScript and my knowledge of arrays and iterators acquired in the _nology course. The main goal of this project is to showcase my understanding of basic programming concepts and my ability to apply them in a practical way. 
+
+The application includes basic mathematical functions such as addition, subtraction, multiplication, and division, and the user interface is designed to be user-friendly and easy to use. The project is built with the use of arrays and iterators. The project is built with the use of JavaScript for the logic and functionality, SCSS and CSS for styling and layout, and HTML for the structure of the application.
+
+
 
 
 ## 💥 Getting Started 💥
