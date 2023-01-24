@@ -94,7 +94,7 @@ const handleEqual = () => {
       result = resultArr[0];
     } else {
       operation = inputString.split("+");
-      addition(operation);
+      add(operation);
       resultArr.push(result);
     }
   } else if (operator == "-") {
